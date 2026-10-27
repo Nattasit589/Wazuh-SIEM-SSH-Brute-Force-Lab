@@ -5,10 +5,13 @@
 # Description: Downloads and installs Wazuh All-in-One (Manager, Indexer, Dashboard)
 # =====================================================================
 
+# Reproduction helper based on the course's Wazuh 4.14 installation reference.
+set -euo pipefail
+
 echo "[+] Starting Wazuh Server Installation..."
 
 # 1. Download the Wazuh installation script
-curl -sO https://packages.wazuh.com/4.14/wazuh-install.sh
+curl -fSsO https://packages.wazuh.com/4.14/wazuh-install.sh
 
 # 2. Run the installation script (-a for all-in-one, -i for ignoring hardware check)
 sudo bash ./wazuh-install.sh -a -i
