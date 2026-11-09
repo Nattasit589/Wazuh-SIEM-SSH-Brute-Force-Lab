@@ -6,7 +6,7 @@ A comprehensive hands-on Security Operations Center (SOC) detection lab series b
 > **สถานะการพัฒนาโปรเจกต์ (Project Status):**
 > - ✅ **01-ssh-brute-force**: **สมบูรณ์แล้ว (Completed)** พร้อมบทวิเคราะห์ ผลการทดสอบจริงด้วย Hydra รูปภาพหลักฐาน (Screenshots) และสคริปต์
 > - ⏳ **02-windows-log-analysis**: **กำลังใส่เนื้อหา (In Progress / Work in Progress)** อยู่ระหว่างการจัดทำเนื้อหาและการทดสอบเพิ่มเติม
-> - ⏳ **03-nikto-web-scan-detection**: **กำลังใส่เนื้อหา (In Progress / Work in Progress)** อยู่ระหว่างการจัดทำเนื้อหาและการทดสอบเพิ่มเติม
+> - ✅ **03-nikto-web-scan-detection**: **สมบูรณ์แล้ว (Completed)** พร้อมบทวิเคราะห์ Nikto + ModSecurity WAF รูปภาพหลักฐานครบ 7 ภาพ และสคริปต์ทั้ง 5 ตัว
 
 ---
 
@@ -43,7 +43,7 @@ flowchart TD
 | :---: | :--- | :---: | :--- | :--- | :--- | :--- |
 | **01** | [SSH Brute Force Detection](01-ssh-brute-force/) | `Completed` (สมบูรณ์) | Ubuntu / SSH (Port 22) | Hydra | Rule `5763`, Rule `5760` | **T1110 / T1110.001**<br/>*(Credential Access: Brute Force)* |
 | **02** | [Windows Security Log Analysis](02-windows-log-analysis/) | `In Progress` (กำลังใส่เนื้อหา) | Windows / Security Channel | Script / SMB | Event ID `4625`, Rule `60122`, Rule `60115` | **T1110.001**<br/>*(Credential Access: Password Guessing)* |
-| **03** | [Nikto Web Vulnerability Scan Detection](03-nikto-web-scan-detection/) | `In Progress` (กำลังใส่เนื้อหา) | Ubuntu / Apache2 (Port 80) | Nikto | Rule `31101`, Rule `31106` | **T1595.002**<br/>*(Reconnaissance: Active Scanning)* |
+| **03** | [Nikto Web Vulnerability Scan Detection](03-nikto-web-scan-detection/) | `Completed` (สมบูรณ์) | Ubuntu / Apache2 (Port 80) | Nikto | Rule `31101`, Rule `31106` | **T1595.002**<br/>*(Reconnaissance: Active Scanning)* |
 
 ---
 
@@ -77,7 +77,7 @@ Wazuh-SIEM-SSH-Brute-Force-Lab/
 │   ├── images/
 │   ├── queries/
 │   └── scripts/
-└── 03-nikto-web-scan-detection/               # [In Progress / กำลังใส่เนื้อหา] Module 3: Nikto Web Vulnerability Scan
+└── 03-nikto-web-scan-detection/               # [Completed / สมบูรณ์] Module 3: Nikto Web Vulnerability Scan
     ├── README.md
     ├── images/
     ├── queries/
